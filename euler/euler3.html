@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+<input type="text" id="text" value="2+2">
+<canvas id="myCanvas" width="480" height="320"></canvas>
+
+<script>
+	
+    
+   function fib(n){
+    var l = [1,0];
+    var i = 2;
+    t = true;
+    while (t) {
+        q = l[i-1] + l[i-2];
+        if (q<= n) {l[i] = q; i++} else {t = false}
+        }
+    return l;
+    }
+    
+    function somma (l) {
+        var t = 0;
+        var i = 0;
+        while (i<l.length) {
+            t += l[i];
+            i++;
+            }
+        return t
+    }
+    function find_next(N){
+        var l = [1,0,1];
+        while (l[2] < N){
+            var i1 = l[0];
+            var i2 = l[1];
+            var i3 = l[2];
+            l[0]= i2;
+            l[1]= i3;
+            l[2]= i3+i2;
+            }
+         return l   
+        }
+    qwe = 2;
+    function sol2 (N) {
+        var l = find_next(N);
+        if (l[0] % 2 === 0) {return l[2]}
+        if (l[1] % 2 === 0) {return l[0]}
+        if (l[2] % 2 === 0) {return l[1]}
+    }
+    
+    function sol (N){var r=sol2(N); return (r-1)/2}
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    function ssol (N) {return fib(N).filter(function(k){return (k%2 == 0) }).reduce(reducer,0) 
+    }
+    
+    function range(start, len){
+    var a=[start], b=0;
+    while(b<len){b+=1;a.push(start)}
+    return a;
+    };
+    
+    function primeQ(n,l){
+        
+        for(var i = 0; i<l.length; i++){
+            if (n%l[i] === 0) {return false}
+        }
+        return true
+    }
+    
+    function primes(N,l){
+        if (!l) {l=[2]};
+        var next = 3;
+        while (next <= N){
+
+        if (primeQ(next,l)) {l.push(next)}
+        next+=1;
+        }
+        
+        return l
+    }
+    
+    
+    function sm_pr_div (p,n){
+        var l = primes(p);
+        var m = n;
+        var q = [];
+        var i;
+        i = 0;
+        {
+            {
+            for(i=0;i<l.length;i++){
+            while (n % l[i] == 0) {n = n / l[i]; q.push(l[i])}
+            }
+            }
+        
+        
+        
+        
+        }
+        var tmp = 1;
+        for (i = 0; i < q.length ; i++){  tmp *= q[i]}
+        
+        return [m,tmp,n,q]
+    }
+    
+    
+    
+
+</script>
+
+</body>
+</html>
